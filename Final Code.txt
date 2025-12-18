@@ -1,0 +1,64 @@
+conjugate <- function(v) {
+
+c1 <- substr(v,1,1)
+c2 <- substr(v,2,2)
+c3 <- substr(v,3,3)
+vd <- VerbList$`Durative Theme Vowel`[VerbList$Root==v]
+vp <- VerbList$`Preterite Theme Vowel`[VerbList$Root==v]
+
+droot <- paste(c1,c2,c2,vd,c3,sep="",collapse="-")
+
+dsm1 <- paste("a",droot,sep="",collapse="-")
+dsm2 <- paste("ta",droot,sep="",collapse="-")
+dsm3 <- paste("i",droot,sep="",collapse="-")
+dsf1 <- paste("a",droot,sep="",collapse="-")
+dsf2 <- paste("ta",droot,"i",sep="",collapse="-")
+dsf3 <- paste("i",droot,sep="",collapse="-")
+dpm1 <- paste("ni",droot,sep="",collapse="-")
+dpm2 <- paste("ta",droot,"a",sep="",collapse="-")
+dpm3 <- paste("i",droot,"u",sep="",collapse="-")
+dpf1 <- paste("ni",droot,sep="",collapse="-")
+dpf2 <- paste("ta",droot,"a",sep="",collapse="-")
+dpf3 <- paste("i",droot,"a",sep="",collapse="-")
+
+proot <- paste(c1,c2,vp,c3,sep="",collapse="-")
+
+psm1 <- paste("a",proot,sep="",collapse="-")
+psm2 <- paste("ta",proot,sep="",collapse="-")
+psm3 <- paste("i",proot,sep="",collapse="-")
+psf1 <- paste("a",proot,sep="",collapse="-")
+psf2 <- paste("ta",proot,"i",sep="",collapse="-")
+psf3 <- paste("i",proot,sep="",collapse="-")
+ppm1 <- paste("ni",proot,sep="",collapse="-")
+ppm2 <- paste("ta",proot,"a",sep="",collapse="-")
+ppm3 <- paste("i",proot,"u",sep="",collapse="-")
+ppf1 <- paste("i",proot,"u",sep="",collapse="-")
+ppf2 <- paste("ta",proot,"a",sep="",collapse="-")
+ppf3 <- paste("i",proot,"a",sep="",collapse="-")
+
+
+Akkadian.Durative <- data.frame(
+    Person = c("Durative","Person",1,2,3), 
+    sg_masc = c("sg","masc",dsm1,dsm2,dsm3),
+    sg_fem = c("sg","fem",dsf1,dsf2,dsf3),
+    pl_masc = c("pl","masc",dpm1,dpm2,dpm3),
+    pl_fem = c("pl","fem",dpf1,dpf2,dpf3),
+    stringsAsFactors = FALSE
+)
+names(Akkadian.Durative) <- NULL
+
+Akkadian.Preterite <- data.frame(
+    Person = c("Preterite","Person",1,2,3), 
+    sg_masc = c("sg","masc",psm1,psm2,psm3),
+    sg_fem = c("sg","fem",psf1,psf2,psf3),
+    pl_masc = c("pl","masc",ppm1,ppm2,ppm3),
+    pl_fem = c("pl","fem",ppf1,ppf2,ppf3),
+    stringsAsFactors = FALSE
+)
+names(Akkadian.Preterite) <- NULL
+print(Akkadian.Durative)
+print(Akkadian.Preterite)
+
+}
+
+conjugate("blṭ")
